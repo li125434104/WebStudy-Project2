@@ -1,0 +1,93 @@
+:root {
+	--fill-color: #3498db;
+	--empty-color: #e0e0e0;
+}
+
+:focus {outline:none;} /*for IE*/
+::-moz-focus-inner {border-color: transparent;} /*for mozilla*/
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: aliceblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.container {
+	text-align: center;
+}
+
+.container-progress {
+	display: flex;
+	justify-content: space-between;
+	width: 400px;
+	position: relative;
+}
+
+.container-progress::before {
+	content: '';
+	position: absolute;
+	background-color: var(--empty-color);
+	width: 100%;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	height: 5px;
+	z-index: -1;  /* 在最下面 */
+}
+
+.progress {
+	position: absolute;
+	background-color: var(--fill-color);
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	height: 5px;
+	width: 0%;
+	z-index: -1;
+	transition: 0.3s ease-out;
+}
+
+.item {
+	background-color: #fff;
+	font-size: 16px;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	border: var(--empty-color) 3px solid;
+	transition: 0.3s ease-out;
+}
+
+.item.active {
+	border: var(--fill-color) 3px solid;
+}
+
+.btn {
+	background-color: var(--fill-color);
+	color: #fff;
+	cursor: pointer;
+	border-radius: 5px;
+	border: 0;
+	margin: 20px;
+	font-size: 14px;
+	font-family: inherit;
+	padding: 8px 30px;
+}
+
+.btn:disabled {
+	background-color: var(--empty-color);
+	cursor: not-allowed;
+}
+
+.btn:active {
+	transform: scale(0.98);
+}
